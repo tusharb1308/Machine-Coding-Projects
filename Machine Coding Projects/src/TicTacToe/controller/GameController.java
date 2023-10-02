@@ -1,5 +1,6 @@
 package TicTacToe.controller;
 
+import TicTacToe.exception.GameOverException;
 import TicTacToe.models.*;
 import TicTacToe.service.winningStrategy.WinningStrategies;
 import TicTacToe.service.winningStrategy.WinningStrategyFactory;
@@ -34,7 +35,7 @@ public class GameController {
         return game.getWinner();
     }
 
-    public Move executeMove(Game game, Player player) {
+    public Move executeMove(Game game, Player player) throws GameOverException {
         Move move = player.makeMove(game.getCurrentBoard());
         game.setNumberOfSymbols(game.getNumberOfSymbols() + 1);
         updateGameStatus(game);
@@ -55,11 +56,12 @@ public class GameController {
     }
 
     public Board undoMove(Game game, Move lastMove){
+        // TODO: write undo logic here
         return null;
     }
 
     public void replayGame(Game game){
-
+        // TODO: write replay game logic here
     }
 
     private void updateBoardStates(Game game) {

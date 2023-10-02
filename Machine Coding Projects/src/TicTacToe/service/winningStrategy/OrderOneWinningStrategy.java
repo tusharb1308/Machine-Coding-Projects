@@ -37,7 +37,7 @@ public class OrderOneWinningStrategy implements WinningStrategy{
         int col = lastMove.getCell().getCol();
 
         if(checkRowWin(row, symbol)) return player;
-        else if(checkColWin(col, symbol)) return player;
+        else if(checkColumnWin(col, symbol)) return player;
         else if(isTopLeftDiagonalCell(row, col) && checkTopLeftDiagonalWin(symbol)) return player;
         else if(isTopRightDiagonalCell(row, col) && checkTopRightDiagonalWin(symbol)) return player;
         else if(isCornerCell(row, col) && checkCornerWin(symbol)) return player;
@@ -68,7 +68,7 @@ public class OrderOneWinningStrategy implements WinningStrategy{
         return rowHashMaps.get(row).get(symbol) == dimension;
     }
 
-    private boolean checkColWin(int row, char symbol){
+    private boolean checkColumnWin(int row, char symbol){
         colHashMaps.get(row).putIfAbsent(symbol, 0);
         colHashMaps.get(row).put(
                 symbol,

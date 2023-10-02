@@ -1,5 +1,7 @@
 package TicTacToe.models;
 
+import TicTacToe.exception.GameOverException;
+
 import java.util.Scanner;
 
 public class Player {
@@ -18,12 +20,14 @@ public class Player {
         this.playerType = playerType;
     }
 
-    public Move makeMove(Board board){
+    public Move makeMove(Board board) throws GameOverException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the row for your move, " + this.getName());
         int row = sc.nextInt();
         System.out.println("Enter the col for your move, " + this.getName());
         int col = sc.nextInt();
+
+        //TODO: validation for the move, check row and col, and cell status
 
         board.getBoard().get(row).get(col).setCellState(CellState.FILLED);
         board.getBoard().get(row).get(col).setPlayer(this);

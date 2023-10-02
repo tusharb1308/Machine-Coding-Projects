@@ -8,7 +8,7 @@ import TicTacToe.service.winningStrategy.WinningStrategies;
 import java.util.*;
 
 public class TicTacToeGame {
-    public static void main(String[] args){
+    public static void main(String[] args) throws GameOverException {
         Scanner sc = new Scanner(System.in);
         GameController gameController = new GameController();
 
@@ -42,6 +42,7 @@ public class TicTacToeGame {
             System.out.println("what is the symbol of the BOT");
             String botSymbol = sc.next();
 
+            // TODO: take input for bot difficulty level and set strategy accordingly
             BotDifficultyLevel botDifficultyLevel = BotDifficultyLevel.EASY;
 
             Bot bot = new Bot(dimension, botName, botSymbol.charAt(0), PlayerType.BOT, botDifficultyLevel);
@@ -58,7 +59,11 @@ public class TicTacToeGame {
             playerIndex++;
             playerIndex = playerIndex % players.size();
             Move movePlayed = gameController.executeMove(game, players.get(playerIndex));
-
+//            System.out.println("Do you want to undo your move? Y/N");
+//            String isUndoRequired = sc.next();
+//            if(isUndoRequired.equalsIgnoreCase("Y")){
+//                gameController.undoMove(game, movePlayed);
+//            }
             Player winner = gameController.checkWinner(game, movePlayed);
             if(winner != null){
                 System.out.println("WINNER IS : " + winner.getName());
@@ -69,5 +74,6 @@ public class TicTacToeGame {
         System.out.println("Final board status");
         gameController.displayBoard(game);
         System.out.println("Do you want a replay");
+        // TODO: call the replay logic here
     }
 }
