@@ -13,8 +13,8 @@ public class Cell {
     }
 
     public void display(){
-        if(player == null) System.out.println("| |");
-        else System.out.println("|" + player.getSymbol() + "|");
+        if(player == null) System.out.print("| |");
+        else System.out.print("|" + player.getSymbol() + "|");
     }
 
     public int getRow() {
